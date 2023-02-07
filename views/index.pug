@@ -1,0 +1,131 @@
+mixin comment(commentData)
+  .comment
+    if commentData.postedByAdmin
+      em (Posté par Admin)
+    .date= commentData.date
+    .author= commentData.author
+    .text= commentData.text
+
+doctype html
+html(lang="fr")
+  head
+    meta(charset="UTF-8")
+    meta(http-equiv="X-UA-Compatible", content="IE=edge")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0")
+    title Cours Pug
+    //-* CSS
+    link(rel="stylesheet", href="./style.css")
+    //- style.
+    //-   p {
+    //-     color :red;
+    //-     text-decoration: underline
+    //-   }
+    style.
+      .comment {
+        line-height: 1.5;
+        padding: 0.5rem;
+        border: 1px solid #555;
+        width: 250px;
+        margin-bottom: 1rem;
+      }
+      .date {
+        font-size: 0.75em;
+        text-align: right
+      }
+      .author {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+  body
+    h1 Hello World!
+    //-* Text multiligne
+    p.
+      Ceci est un paragprahe
+      et ceci est une nouvelle ligne
+
+    h2#subtitle Ajouter des classes et des IDs
+    p.big-para du texte pour mon gros paragraphe
+    .display-box
+
+    ul
+      li Item #1
+      li Item #2
+      li Item #3
+    
+    //-* Les attributs
+    form
+      input(type="text" name="name" data-js=`${5 > 2 ? "OK" : "PAS OK"}`)
+      input(type="text" disabled)
+
+    //-*  JS
+    - const myClasses = ["class1", "class2", "class3"]
+    div.my-div(class=myClasses)
+
+    - const myStyles = { "color": "red", "background-color": "blue" }
+    div(style=myStyles)
+
+    - const myAttributes = { "src": "myPhoto.png", "alt": "Ceci est ma photo"}
+    img&attributes(myAttributes)
+
+    //- p(style="text-align: center; text-transform: uppercase;") Du CSS inline !
+    - const pStyles = { "text-align": "center", "text-transform": "uppercase"};
+    p(style=pStyles) Du CSS inline !
+
+    //-* Boucle each
+    h2 Boucle each
+    each n, i in [10, 2, 3, 4, 5]
+      p= i + " - " + n
+    
+    - const names = ["John", "Peter", "Susan"]
+    each n, i in names
+      p= i + " - " + n
+
+    - const grades = {"Dev Web": 18, "Maquettage": 11}
+    each v, k in grades
+      p= k + " - " + v
+
+    for v, k in []
+      p= k + " - " + v
+    else
+      strong Pas de valeur
+
+    //-* Les conditions
+    h2 Les conditions
+    - let user = { name: "John", loggedIn: false, lastLogin: 11 }
+    if user.loggedIn
+      p
+        //- le pipe (|) permet d'interpréteur le mot suivant comme du texte plein et non une balise
+        | Bienvenue, 
+        strong #{user.name}
+    else if user.lastLogin < 10
+      p Votre dernière connexion remonte à #{user.lastLogin} minutes
+      p
+        a(href="/login") Se reconnecter
+    else
+      a(href="/login") Se connecter
+    
+    //-* Case
+    h2 Case
+    //- orderStatus => Pending || In_Transit || Completed
+    - const orderStatus = "En attente"
+    case orderStatus
+      when "En attente"
+        //- faire des trucs
+        p Votre commande a été passée et sera expédiée sous peu.
+      when "En transit"
+        p Votre commande est en cours de livraison - vous la recevrez sous peu.
+      when "Complétée"
+        p Votre commande est terminée.
+      default
+        p Désolé, nous ne savons pas ce qui s'est passé avec votre commande...
+    
+    //-* Includes
+    h2 Includes
+    include ../includes/nav
+
+    //-* Mixins
+    h2 Mixins
+    - const c = { postedByAdmin: true, date: "04-02-2018", author: "John", text: "Salut mon pote, joli tuto" }
+    +comment(c)
+    - const c2 = { date: "07-03-2021", author: "Peter", text: "C'était fun" }
+    +comment(c2)

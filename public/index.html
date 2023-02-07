@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cours Pug</title>
+    <link rel="stylesheet" href="./style.css">
+    <style>
+      .comment {
+        line-height: 1.5;
+        padding: 0.5rem;
+        border: 1px solid #555;
+        width: 250px;
+        margin-bottom: 1rem;
+      }
+      .date {
+        font-size: 0.75em;
+        text-align: right
+      }
+      .author {
+        font-size: 1.25rem;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Hello World!</h1>
+    <p>
+      Ceci est un paragprahe
+      et ceci est une nouvelle ligne
+      
+    </p>
+    <h2 id="subtitle">Ajouter des classes et des IDs</h2>
+    <p class="big-para">du texte pour mon gros paragraphe</p>
+    <div class="display-box"></div>
+    <ul>
+      <li>Item #1</li>
+      <li>Item #2</li>
+      <li>Item #3</li>
+    </ul>
+    <form>
+      <input type="text" name="name" data-js="OK">
+      <input type="text" disabled>
+    </form>
+    <div class="my-div class1 class2 class3"></div>
+    <div style="color:red;background-color:blue;"></div><img src="myPhoto.png" alt="Ceci est ma photo">
+    <p style="text-align:center;text-transform:uppercase;">Du CSS inline !</p>
+    <h2>Boucle each</h2>
+    <p>0 - 10</p>
+    <p>1 - 2</p>
+    <p>2 - 3</p>
+    <p>3 - 4</p>
+    <p>4 - 5</p>
+    <p>0 - John</p>
+    <p>1 - Peter</p>
+    <p>2 - Susan</p>
+    <p>Dev Web - 18</p>
+    <p>Maquettage - 11</p><strong>Pas de valeur</strong>
+    <h2>Les conditions</h2><a href="/login">Se connecter</a>
+    <h2>Case</h2>
+    <p>Votre commande a été passée et sera expédiée sous peu.</p>
+    <h2>Includes</h2>
+    <nav>
+      <ul>
+        <li><a href="./index.html">Accueil</a></li>
+        <li><a href="./about.html">À propos </a></li>
+      </ul>
+    </nav>
+    <h2>Mixins</h2>
+    <div class="comment"><em>(Posté par Admin)</em>
+      <div class="date">04-02-2018</div>
+      <div class="author">John</div>
+      <div class="text">Salut mon pote, joli tuto</div>
+    </div>
+    <div class="comment">
+      <div class="date">07-03-2021</div>
+      <div class="author">Peter</div>
+      <div class="text">C'était fun</div>
+    </div>
+  </body>
+</html>

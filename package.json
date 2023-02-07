@@ -1,0 +1,12 @@
+{
+  "name": "pug-course",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "watch": "pug -w ./views -o ./public -P"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
